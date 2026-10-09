@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Үш би кодексі</title>
+
+  <style>
+    :root {
+      --green: #1e5948;
+      --gold: #c59a52;
+      --bg: #f7f3eb;
+      --paper: #fffdf8;
+      --ink: #202b2a;
+      --muted: #66716b;
+      --line: #ded8ca;
+      --soft: #edf3ed;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .hero {
+      padding: 65px 20px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #173f35, #34735a);
+
+    }
+    .ornament {
+      color: #e9c681;
+      font-size: 26px;
+      letter-spacing: 10px;
+    }
+
+    .eyebrow {
+      margin-top: 18px;
+      color: #e9c681;
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: 3px;
+      background-image: url("i.webp")
+    }
+    h1 {
+      margin: 18px 0;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #e4eee7;
+      font-size: 18px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 25px;
+      color: var(--green);
+      text-decoration: none;
+      font: bold 13px Arial, sans-serif;
+    }
+
+    nav a:hover {
+      background: var(--soft);
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 35px 20px 65px;
+    }
+
+    section {
+      padding-top: 55px;
+      scroll-margin-top: 75px;
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin-top: 8px;
+      font-size: 23px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 7px 24px #00000008;
+    }
+
+    .number {
+      color: var(--gold);
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .symbol {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      margin: 15px 0;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--green);
+      font-size: 27px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: var(--green);
+      font: bold 11px Arial, sans-serif;
+    }
+
+    .quote {
+      margin: 22px 0;
+      padding: 16px 20px;
+      background: var(--paper);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      padding: 22px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+    }
+
+    .scenario-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .scenario-buttons {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+
+    button {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--paper);
+      color: var(--ink);
+      font: bold 14px Arial, sans-serif;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button.active {
+      border-color: var(--green);
+      background: var(--soft);
+    }
+
+    .result {
+      min-height: 250px;
+      padding: 25px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .result h3 {
+      color: var(--green);
+    }
+
+    .pledge {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pledge label {
+      display: flex;
+      gap: 12px;
+      padding: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .pledge input {
+      margin-top: 5px;
+      accent-color: var(--green);
+    }
+
+    .progress {
+      height: 8px;
+      margin: 10px 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--line);
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--green);
+      transition: width 0.2s;
+    }
+
+    .action {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 30px;
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+    .survey-card {
+  margin-top: 10px;
+  padding: 22px;
+  text-align: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 18px;
+  box-shadow: 0 7px 24px #00000008;
+}
+
+.survey-card p {
+  margin: 10px 0 16px;
+  color: var(--ink);
+}
+
+.survey-link {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  font: bold 14px Arial, sans-serif;
+  transition: background 0.2s;
+}
+
+.survey-link:hover {
+  background: #34735a;
+}
+
+    @media (max-width: 760px) {
+      .grid,
+      .steps,
+      .scenario-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 45px 20px;
+      }
+
+      nav {
+        position: relative;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="ornament">◇ ✦ ◇</div>
+  <div class="eyebrow"></div>
+
+  <h1>ҮШ БИ КОДЕКСІ</h1>
+
+  <p>
+    Әділдік • Бірлік • Бейбітшілік<br>
+    Ұлы билердің өнегесін қазіргі жасөспірімдер
+    арасындағы дауларды шешу үлгісіне айналдыру
+  </p>
+
+  <div class="ornament">❖</div>
+</header>
+
+<nav>
+  <a href="#idea">Жоба идеясы</a>
+  <a href="#values">Үш құндылық</a>
+  <a href="#algorithm">3 қадам</a>
+  <a href="#practice">Жағдаяттар</a>
+
+</nav>
+
+<main>
+
+<section id="idea" class="intro">
+  <div class="kicker">Негізгі идея</div>
+
+  <h2>Дауласу емес — түсінісу жолын таңдау</h2>
+
+  <p>
+    «Үш би кодексі» — Төле би, Қазыбек би және Әйтеке бидің
+    қазақ қоғамындағы бітімгерлік рөлін негізге ала отырып
+    жасалған тәрбиелік-практикалық модель.
+  </p>
+
+  <div class="quote">
+    <strong>Қызықты дерек:</strong>
+
+Төле би, Қазыбек би және Әйтеке би — қазақ халқының 
+тарихында ерекше орын алған үш ұлы би.
+ Олар Тәуке ханның тұсында ел бірлігін
+нығайтуға және қазақ халқының заңдар
+жүйесі — «Жеті жарғыны» қалыптастыруға 
+үлес қосқан. Төле би Ұлы жүздің, Қазыбек би
+Орта жүздің, ал Әйтеке би Кіші жүздің биі 
+болған. Олар халық арасындағы дауларды шешіп,
+әділдік пен бейбітшілікті сақтауға тырысқан. 
+Үш бидің даналығы мен шешендік сөздері бүгінгі 
+күнге дейін халық жадында сақталған.
+  </div>
+
+  <p class="note">
+    Кодекстегі қағидалар тарихи мұраның қазіргі заманға
+    бейімделген түсіндірмесі болып табылады.
+  </p>
+</section>
+
+<section id="values">
+  <div class="kicker">01 / Үш би — үш құндылық</div>
+  <h2>Кодекстің негізі</h2>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="number">01 — ТӨЛЕ БИ</div>
+      <div class="symbol">⚖</div>
+      <h3>ӘДІЛДІК</h3>
+      <p>
+        Әр тарапты тыңдау, дәлелдерді ажырату және
+        ешкімді алдын ала кінәламау.
+      </p>
+      <span class="tag">Тыңда • Тексер • Әділ шеш</span>
+    </article>
+
+    <article class="card">
+      <div class="number">02 — ҚАЗЫБЕК БИ</div>
+      <div class="symbol">❋</div>
+      <h3>БІРЛІК</h3>
+      <p>
+        Өзара құрметті сақтап, адамды емес, мәселені
+        талқылау және ортақ шешім табуға ұмтылу.
+      </p>
+      <span class="tag">Құрметте • Түсін • Біріктір</span>
+    </article>
+
+    <article class="card">
+      <div class="number">03 — ӘЙТЕКЕ БИ</div>
+      <div class="symbol">☘</div>
+      <h3>БЕЙБІТШІЛІК</h3>
+      <p>
+        Жанжалды ушықтырмай, қауіпсіз шешімге келу
+        және өзара келісімді сақтау.
+      </p>
+      <span class="tag">Тоқтат • Келіс • Қалпына келтір</span>
+    </article>
+
+  </div>
+</section>
+
+<section id="algorithm">
+  <div class="kicker">02 / ҮШ ҚАДАМ</div>
+  <h2>«Үш би» алгоритмі: 3 қадам</h2>
+
+  <div class="steps">
+
+    <article class="step">
+      <div class="number">1-ҚАДАМ · ӘДІЛДІК</div>
+      <h3>Екі тарапты тыңда</h3>
+      <p>
+        Не болғанын тыңда. Фактіні қауесеттен ажырат.
+        Бірден айыптама.
+      </p>
+    </article>
+
+    <article class="step">
+      <div class="number">2-ҚАДАМ · БІРЛІК</div>
+      <h3>Ортақ шешім ізде</h3>
+      <p>
+        «Мәселені қалай түзете аламыз?» деп сұра.
+        Әр адамның сезімі мен шекарасын құрметте.
+      </p>
+    </article>
+
+    <article class="step">
+      <div class="number">3-ҚАДАМ · БЕЙБІТШІЛІК</div>
+      <h3>Қауіпсіз келісімге кел</h3>
+      <p>
+        Нақты әрекетке келісіп, нәтижесін тексер.
+        Қауіп немесе буллинг болса, ересекке хабарла.
+      </p>
+    </article>
+
+  </div>
+
+  <div class="quote">
+    <strong>Маңызды:</strong>
+    Буллинг — жай ғана екі жақтың кикілжіңі емес.
+    Жәбірленушіні татуласуға мәжбүрлемей, мұғалімге,
+    мектеп психологіне немесе сенімді ересекке жүгіну керек.
+  </div>
+</section>
+
+<section id="practice">
+  <div class="kicker">03 / Қолданбалы бөлім</div>
+  <h2>Жағдаятты шешіп көр</h2>
+
+  <p class="muted">
+    Жағдаятты таңда. «Үш би» алгоритмі бойынша
+    қандай әрекет жасауға болатынын қара.
+  </p>
+
+  <div class="scenario-layout">
+
+    <div class="scenario-buttons">
+      <button class="scenario-btn active" data-case="friends">
+        1. Достар арасындағы реніш
+      </button>
+
+      <button class="scenario-btn" data-case="chat">
+        2. Сынып чатындағы мазақ
+      </button>
+
+      <button class="scenario-btn" data-case="exclude">
+        3. Бір оқушыны топтан шеттету
+      </button>
+
+      <button class="scenario-btn" data-case="rumor">
+        4. Интернет желісіндегі қорлау
+      </button>
+    </div>
+
+    <div class="result" aria-live="polite">
+      <div class="kicker" id="case-label">ЖАҒДАЙ 01</div>
+      <h3 id="case-title">Достар арасындағы реніш</h3>
+
+      <p id="case-desc">
+        Екі дос ортақ тапсырмаға байланысты сөзге келіп қалды.
+      </p>
+
+      <ul id="case-steps">
+        <li>1-жағдаят. Достар арасындағы реніш
+
+Мәселе: Достар бір-бірін түсінбей, араларында реніш пайда болды.
+
+Жағдаят:
+
+1-оқушы (Аян) мен 2-оқушы (Данияр) жақын достар. Бір күні Аян Даниярға демалыс күні бірге футбол ойнауға уәде береді. Бірақ демалыс күні Аян басқа достарымен кездесіп, Даниярға ескертпейді.
+
+Данияр бұған ренжіп, келесі күні мектепте Аянмен сөйлеспей қояды. Аян болса, Даниярдың неге ренжігенін түсінбей, оған ашулана бастайды. Осылайша, екі достың арасындағы түсініспеушілік ұлғая түседі.
+
+Мәселенің себебі: Уәдеге тұрмау, алдын ала ескертпеу және мәселені ашық талқыламау.
+
+Үш би кодексі бойынша шешім:
+
+<li>⚖️ Әділдік: Екі оқушы да бір-бірінің пікірін тыңдап, болған жағдайды әділ бағалауы керек. Аян өзінің ескертпегені дұрыс болмағанын түсінуі қажет. Данияр да досының әрекетінің себебін анықтауға тырысуы керек.<li>
+
+<li>🤝 Бірлік: Достықты сақтау үшін екі оқушы да өзара құрмет танытып, бір-бірінің сезімін түсінуге тырысуы қажет.<li>
+
+<li>🕊️ Бейбітшілік: Аян Даниярдан кешірім сұрап, алдағы уақытта жоспар өзгерсе, алдын ала ескертуге уәде береді. Данияр да ренішін ашық айтып, достық қарым-қатынасты қалпына келтіруге мүмкіндік береді.<li>
+
+Кодекстің қорытындысы: Достықты сақтау үшін өзара сенім, ашық әңгіме және жауапкершілік қажет.</li>
+</ul>
+
+      <p class="note" id="case-safety">
+        Мақсат — екі тарапқа да әділ шешім табу.
+      </p>
+    </div>
+    <div class="survey-card">
+     <div class="kicker">ПІКІРІҢДІ БІЛДІР</div>
+     <p>Төмендегі сілтеме арқылы сауалнамадан өтіңіз:</p>
+     <a href="https://docs.google.com/forms/d/e/1FAIpQLScalHCTA4luBtZ_CxsSiBeHU50LfFGzidow0ctrMwUDZwlMzg/viewform?usp=publish-editor" target="_blank" class="survey-link">
+    Сауалнамаға өту →
+  </a>
+</div>
+  </div>
+</section>
+
+<section id="pledge">
+</section>
+
+</main>
+
+<footer>
+  <div class="ornament">◇ ✦ ◇</div>
+  <p>«Үш би кодексі»</p>
+  <p>Тарихи мұра — бүгінгі ұрпаққа өнеге</p>
+  <p>Төле  би · Қазыбек би · Әйтеке би</p>
+</footer>
+
+<script>
+const cases = {
+  friends: {
+    label: "ЖАҒДАЯТ 01",
+    title: "Достар арасындағы реніш",
+    desc: "Мәселе: Достар бір-бірін түсінбей, араларында реніш пайда болды.",
+    steps: [
+"1-оқушы (Аян) мен 2-оқушы (Данияр) жақын достар. Бір күні Аян Даниярға демалыс күні бірге футбол ойнауға уәде береді. Бірақ демалыс күні Аян басқа достарымен кездесіп, Даниярға ескертпейді",
+
+"Данияр бұған ренжіп, келесі күні мектепте Аянмен сөйлеспей қояды. Аян болса, Даниярдың неге ренжігенін түсінбей, оған ашулана бастайды. Осылайша, екі достың арасындағы түсініспеушілік ұлғая түседі.",
+
+"Мәселенің себебі: Уәдеге тұрмау, алдын ала ескертпеу және мәселені ашық талқыламау.",
+
+"Үш би кодексі бойынша шешім:",
+
+"⚖️ Әділдік: Екі оқушы да бір-бірінің пікірін тыңдап, болған жағдайды әділ бағалауы керек. Аян өзінің ескертпегені дұрыс болмағанын түсінуі қажет. Данияр да досының әрекетінің себебін анықтауға тырысуы керек.",
+
+"🤝 Бірлік: Достықты сақтау үшін екі оқушы да өзара құрмет танытып, бір-бірінің сезімін түсінуге тырысуы қажет.",
+
+"🕊️ Бейбітшілік: Аян Даниярдан кешірім сұрап, алдағы уақытта жоспар өзгерсе, алдын ала ескертуге уәде береді. Данияр да ренішін ашық айтып, достық қарым-қатынасты қалпына келтіруге мүмкіндік береді.",
+
+"Кодекстің қорытындысы: Достықты сақтау үшін өзара сенім, ашық әңгіме және жауапкершілік қажет."
+    ],
+    safety: "Мақсат — екі тарапқа да әділ шешім табу."
+  },
+
+  chat: {
+    label: "ЖАҒДАЯТ 02",
+    title: "Сынып чатындағы мазақ",
+    desc: "Мәселе: Оқушыны сыныптың ортақ чатында көпшіліктің алдында мазақ ету.",
+    steps: [
+    
+"1-оқушы (Әли) сабақ үстінде мұғалімнің сұрағына қате жауап береді. Сол күні 2-оқушы (Мирас) сыныптың ортақ чатына Әлидің жауабын келемеждейтін хабарлама жазады. Кейбір оқушылар күлетін эмодзилер жіберіп, әзілді жалғастырады.",
+
+"Әли хабарламаларды оқып, өзін ыңғайсыз сезінеді. Келесі күні сабақта жауап беруге қорқып, сыныптастарымен араласудан қашқақтай бастайды.",
+
+"Мәселенің себебі: Өзгенің қатесін мазаққа айналдыру және интернеттегі сөздің адамға қалай әсер ететінін ескермеу.",
+
+"Үш би кодексі бойынша шешім:",
+
+"⚖️ Әділдік: Мирас өз әрекетінің дұрыс болмағанын түсінуі керек. Әр оқушы қателесуге құқылы, ал қате жауап бергені үшін ешкімді кемсітуге болмайды.",
+"🤝 Бірлік: Сыныптастары мазаққа қосылмай, Әлиге қолдау көрсетуі керек. Егер хабарлама қорлайтын болса, оны таратуды тоқтатып, қажет жағдайда мұғалімге хабарлау қажет.",
+"🕊️ Бейбітшілік: Мирас Әлиден кешірім сұрап, қорлайтын хабарламасын өшіреді. Сыныптастар чатта бір-бірін құрметтеу ережелерін қабылдайды.",
+
+"Кодекстің қорытындысы: Экранның ар жағында да сезімі бар адам отырғанын ұмытпау керек. Әзіл біреуді қорлауға айналмауы тиіс.",
+    ],
+    safety: "Қауіпсіздік бірінші орында. Татуласуға мәжбүрлеуге болмайды.",
+  },
+
+  exclude: {
+    label: "ЖАҒДАЯТ 03",
+    title: "Бір оқушыны топтан шеттету",
+    desc: "Мәселе: Оқушыны сыныптағы топтық жұмысқа қатыстырмау.",
+    steps: [
+
+"Мәселе: Оқушыны сыныптағы топтық жұмысқа қатыстырмау.",
+
+"1-оқушы (Аружан) мен 2-оқушы (Мадина) бір сыныпта оқиды. Мұғалім оқушыларға топтық жоба дайындауды тапсырады. Мадина өз достарымен топ құрып, Аружанды топқа қоспайды.",
+
+"Аружан топқа қосылғысы келетінін айтқанда, Мадина: «Біз өзіміздің достарымызбен жұмыс істейміз, сен басқа топқа бар», — деп жауап береді. Басқа топтар да Аружанды қабылдағысы келмейді.",
+
+"Нәтижесінде Аружан жалғыз қалып, тапсырмаға қатыса алмайды.",
+
+"Мәселенің себебі: Өз ортасына ғана басымдық беру, өзгелерді қабылдамау және тең мүмкіндік бермеу.",
+
+"Үш би кодексі бойынша шешім:",
+
+"⚖️ Әділдік: Әр оқушының топтық жұмысқа қатысуға және өз қабілетін көрсетуге мүмкіндігі болуы керек. Мұғалім топтарды әділ ұйымдастырып, ешкімнің шет қалмауын қадағалайды.",
+
+"🤝 Бірлік: Мадина мен оның достары Аружанды топқа қосып, тапсырмаларды қабілеттері мен қызығушылықтарына қарай бөліседі.",
+
+"🕊️ Бейбітшілік: Оқушылар бір-бірімен сабырлы сөйлесіп, ортақ жұмыс істеудің жолын табады. Егер шеттету қайталанса, мұғалім араласып, мәселені шешуге көмектеседі.",
+
+"Кодекстің қорытындысы: Нағыз бірлік — тек достармен бірге болу емес, әр адамға өзін ұжымның бір бөлігі ретінде сезінуге мүмкіндік беру.",
+
+    ],
+    safety: "Егер шеттету қайталанса, сенімді ересекке хабарлау керек.",
+  },
+
+  rumor: {
+    label: "ЖАҒДАЙ 04",
+    title: "Интернет желісіндегі қорлау",
+    desc: "Оқушы туралы тексерілмеген ақпарат сыныпта тарап кетті.",
+    steps: [
+      "1-оқушы (Нұрсұлтан) өзінің әлеуметтік желідегі парақшасына суретін жариялайды. 2-оқушы (Ержан) суреттің астына Нұрсұлтанның сырт келбетін келемеждейтін пікір жазады.",
+
+"Басқа қолданушылар да пікірге қосылып, Нұрсұлтанды мазақтай бастайды. Ол өз суретін өшіріп, әлеуметтік желіге кіруден қорқады.",
+
+"Мәселенің себебі: Өзгенің қадір-қасиетін құрметтемеу және интернеттегі әрекетінің салдарына жауапкершілікпен қарамау.",
+
+"Үш би кодексі бойынша шешім:",
+
+"⚖️ Әділдік: Әр адамның сырт келбетіне, ерекшелігіне қарамастан құрметке лайық екенін түсіну қажет. Ержан өзінің пікірінің қорлау болғанын мойындауы керек.",
+
+"🤝 Бірлік: Басқа қолданушылар қорлайтын пікірлерге қосылмай, Нұрсұлтанға қолдау көрсетуі керек.",
+
+"🕊️ Бейбітшілік: Ержан қорлайтын пікірін өшіріп, кешірім сұрайды. Нұрсұлтан қорлау жалғасса, пікірлердің скриншоттарын сақтап, аккаунтты шағымдану және бұғаттау мүмкіндіктерін пайдалана алады. Қажет жағдайда сенімді ересекке хабарлауы керек.",
+
+"Кодекстің қорытындысы: Интернеттегі қарым-қатынаста да адамгершілік пен жауапкершілік сақталуы тиіс. Кибербуллингке төзу міндет емес.",
+  ],
+    safety: "Жеке мәліметті таратпа. Қысым болса, ересекке хабарла."
+  }
+};
+
+document.querySelectorAll(".scenario-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".scenario-btn").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const item = cases[button.dataset.case];
+
+    document.getElementById("case-label").textContent = item.label;
+    document.getElementById("case-title").textContent = item.title;
+    document.getElementById("case-desc").textContent = item.desc;
+    document.getElementById("case-safety").textContent = item.safety;
+
+    const list = document.getElementById("case-steps");
+    list.replaceChildren();
+
+    item.steps.forEach(step => {
+      const li = document.createElement("li");
+      li.textContent = step;
+      list.appendChild(li);
+    });
+  });
+});
+
+const checks = [
+  ...document.querySelectorAll(".pledge-check")
+];
+
+function updateProgress() {
+  const count = checks.filter(item => item.checked).length;
+
+  document.getElementById("progress-bar").style.width =
+    (count / checks.length * 100) + "%";
+
+  document.getElementById("progress-text").textContent =
+    count + " / " + checks.length + " қағида таңдалды";
+
+  document.getElementById("pledge-message").textContent = "";
+}
+
+checks.forEach(item => {
+  item.addEventListener("change", updateProgress);
+});
+
+document.getElementById("pledge-button").addEventListener("click", () => {
+  const count = checks.filter(item => item.checked).length;
+
+  document.getElementById("pledge-message").textContent =
+    count === checks.length
+      ? "Сіз кодекстің барлық 5 қағидасын қабылдадыңыз!"
+      : "Сіз " + count +
+        " қағиданы таңдадыңыз. Қалған қағидаларды да оқып шығыңыз.";
+});
+</script>
+
+</body>
+</html>
